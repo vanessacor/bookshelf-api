@@ -15,9 +15,7 @@ router.get("/", (req, res, next) => {
     .then((listOfGenres) => {
       res.json(listOfGenres);
     })
-    .catch((err) => {
-      return next(err);
-    });
+    .catch(next);
 });
 
 router.get("/:id", (req, res, next) => {
@@ -38,9 +36,7 @@ router.get("/:id", (req, res, next) => {
       };
       res.json(data);
     })
-    .catch((error) => {
-      next(error);
-    });
+    .catch(next);
 });
 
 router.post("/", (req, res, next) => {

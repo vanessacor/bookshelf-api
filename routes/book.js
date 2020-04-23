@@ -100,9 +100,7 @@ router.delete("/:id", (req, res, next) => {
       res.status(204).json();
     })
 
-    .catch((error) => {
-      next(error);
-    });
+    .catch(next);
 });
 
 module.exports = router;
