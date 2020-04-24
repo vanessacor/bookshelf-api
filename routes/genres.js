@@ -7,13 +7,15 @@ const ValidationError = mongoose.Error.ValidationError;
 const Genre = require("../models/genre");
 const Author = require("../models/author");
 const Book = require("../models/book");
+const toJson = require("../models/toJson");
 
 router.get("/", (req, res, next) => {
   Genre.find()
     .sort([["name", "ascending"]])
     .exec()
     .then((listOfGenres) => {
-      res.json(listOfGenres);
+      const data = toJson.genresToJson(listOfGenres);
+      res.json(data);
     })
     .catch(next);
 });

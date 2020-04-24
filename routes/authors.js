@@ -7,13 +7,15 @@ const ValidationError = mongoose.Error.ValidationError;
 const Author = require("../models/author");
 const Book = require("../models/book");
 const Genre = require("../models/genre");
+const toJson = require("../models/toJson");
 
 router.get("/", (req, res, next) => {
   Author.find()
     .sort([["familyName", "ascending"]])
     .exec()
     .then((listOfAuthors) => {
-      res.json(listOfAuthors);
+      const data = toJson.authorsToJson(listOfAuthors);
+      res.json(data);
     })
     .catch(next);
 });
@@ -27,11 +29,12 @@ router.get("/:id", (req, res, next) => {
     .then((results) => {
       const author = results[0];
       const books = results[1];
+      const authorJson = toJson.authorToJson(author);
       if (!author) {
         return next();
       }
       const data = {
-        author,
+        authorJson,
         books,
       };
       res.json(data);

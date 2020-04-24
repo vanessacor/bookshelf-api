@@ -7,6 +7,7 @@ const ValidationError = mongoose.Error.ValidationError;
 const Book = require("../models/book");
 const Author = require("../models/author");
 const Genre = require("../models/genre");
+const toJson = require("../models/toJson");
 
 router.get("/", (req, res, next) => {
   Book.find()
@@ -14,7 +15,8 @@ router.get("/", (req, res, next) => {
     .populate("genre")
     .exec()
     .then((listOfBooks) => {
-      res.json(listOfBooks);
+      const data = toJson.booksToJson(listOfBooks);
+      res.json(data);
     })
     .catch(next); // same as catch((err) => next(err))
 });
@@ -32,7 +34,8 @@ router.get("/:id", (req, res, next) => {
       if (!book) {
         return next();
       }
-      res.json(book);
+      const data = toJson.bookToJson(book);
+      res.json(data);
     })
     .catch(next);
 });

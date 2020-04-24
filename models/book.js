@@ -1,6 +1,7 @@
 "use strict";
 
 const mongoose = require("mongoose");
+// mongoose.set("toJSON", { virtuals: true });
 
 const Schema = mongoose.Schema;
 
@@ -22,6 +23,8 @@ const BookSchema = new Schema({
 BookSchema.virtual("url").get(function () {
   return "/book/" + this._id;
 });
+
+// BookSchema.toJSON({ virtuals: true });
 
 // Export model
 module.exports = mongoose.model("Book", BookSchema);

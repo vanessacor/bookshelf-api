@@ -2,7 +2,7 @@
 
 const moment = require("moment");
 const mongoose = require("mongoose");
-
+// mongoose.set("toJSON", { virtuals: true });
 const Schema = mongoose.Schema;
 
 const AuthorSchema = new Schema({
@@ -42,6 +42,8 @@ AuthorSchema.virtual("date_of_birth_formatted").get(function () {
 AuthorSchema.virtual("date_of_death_formatted").get(function () {
   return moment(this.dateOfDeath).format("MMMM Do, YYYY");
 });
+
+// AuthorSchema.toJSON({ virtuals: true });
 
 // Export model
 module.exports = mongoose.model("Author", AuthorSchema);

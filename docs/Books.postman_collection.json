@@ -1,0 +1,493 @@
+{
+  "info": {
+    "_postman_id": "5f177a13-6980-43f9-aa27-be19dfdb8a6c",
+    "name": "Books",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "book",
+      "item": [
+        {
+          "name": "GET /books",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{scheme}}://{{host}}/books/",
+              "protocol": "{{scheme}}",
+              "host": ["{{host}}"],
+              "path": ["books", ""]
+            },
+            "description": "get all books"
+          },
+          "response": []
+        },
+        {
+          "name": "GET /books/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{scheme}}://{{host}}/books/5e77a7829aa7b74139799705",
+              "protocol": "{{scheme}}",
+              "host": ["{{host}}"],
+              "path": ["books", "5e77a7829aa7b74139799705"]
+            },
+            "description": "get one book "
+          },
+          "response": []
+        },
+        {
+          "name": "GET /books/:id  (not found)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{scheme}}://{{host}}/books/5e77a7829aa7b74139799702",
+              "protocol": "{{scheme}}",
+              "host": ["{{host}}"],
+              "path": ["books", "5e77a7829aa7b74139799702"]
+            },
+            "description": "with not found id"
+          },
+          "response": []
+        },
+        {
+          "name": "GET /books/:id  (invalid id)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{scheme}}://{{host}}/books/51232",
+              "protocol": "{{scheme}}",
+              "host": ["{{host}}"],
+              "path": ["books", "51232"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /books",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"title\": \"foobar\", \"author\": \"5e77a7809aa7b741397996fe\", \"genre\": \"5e77a7819aa7b74139799701\", \"status\": \"Read\", \"summary\":\"dhsjhdjashdj\", \"isbn\":\"12121212121212\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{scheme}}://{{host}}/books/",
+              "protocol": "{{scheme}}",
+              "host": ["{{host}}"],
+              "path": ["books", ""]
+            },
+            "description": "Create a new book"
+          },
+          "response": []
+        },
+        {
+          "name": "POST /books (invalid)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"title\": \"\", \"author\": \"5e77a7809aa7b741397996fe\", \"genre\": \"5e77a7819aa7b74139799701\", \"status\": \"read\", \"summary\":\"dhsjhdjashdj\", \"isbn\":\"12121212121212\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{scheme}}://{{host}}/books/",
+              "protocol": "{{scheme}}",
+              "host": ["{{host}}"],
+              "path": ["books", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /books",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"title\": \"Wes Anderson\", \"author\": \"5e9ff4c07e2ea532470c4a60\", \"genre\": \"5e77a7819aa7b74139799701\", \"status\": \"Unread\", \"summary\":\"dhsjhdjashdj\", \"isbn\":\"12121212121212\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{baseUrl}/books/5e77a7829aa7b74139799707",
+              "host": ["{baseUrl}"],
+              "path": ["books", "5e77a7829aa7b74139799707"]
+            },
+            "description": "update book\n"
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /books/:id (not found)",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{scheme}}://{{host}}/books/5e77a7829aa7b74139799703",
+              "protocol": "{{scheme}}",
+              "host": ["{{host}}"],
+              "path": ["books", "5e77a7829aa7b74139799703"]
+            },
+            "description": "Update book not found"
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /books/:id ",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{scheme}}://{{host}}/books/",
+              "protocol": "{{scheme}}",
+              "host": ["{{host}}"],
+              "path": ["books", ""]
+            }
+          },
+          "response": []
+        }
+      ],
+      "protocolProfileBehavior": {}
+    },
+    {
+      "name": "author",
+      "item": [
+        {
+          "name": "GET /authors",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{scheme}}://{{host}}/authors/",
+              "protocol": "{{scheme}}",
+              "host": ["{{host}}"],
+              "path": ["authors", ""]
+            },
+            "description": "Get the list of authors"
+          },
+          "response": []
+        },
+        {
+          "name": "GET /authors/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{scheme}}://{{host}}/authors/5e9ff4c07e2ea532470c4a60",
+              "protocol": "{{scheme}}",
+              "host": ["{{host}}"],
+              "path": ["authors", "5e9ff4c07e2ea532470c4a60"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /authors/:id (not found)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{scheme}}://{{host}}/authors/5e77a7809aa7b741397996f1",
+              "protocol": "{{scheme}}",
+              "host": ["{{host}}"],
+              "path": ["authors", "5e77a7809aa7b741397996f1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /authors/:id (invalid id)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{scheme}}://{{host}}/authors/5e",
+              "protocol": "{{scheme}}",
+              "host": ["{{host}}"],
+              "path": ["authors", "5e"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /authors",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"firstName\":\"Allan\",\"familyName\":\"Smith\",\"dateOfBirth\":\"1935-09-19T23:15:30.000Z\",\"dateOfDeath\":\"1975-08-19T23:15:30.000Z\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{scheme}}://{{host}}/authors",
+              "protocol": "{{scheme}}",
+              "host": ["{{host}}"],
+              "path": ["authors"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /authors (invalid)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"firstName\":\"Allan\",\"familyName\":,\"dateOfBirth\":\"1935-09-19T23:15:30.000Z\",\"dateOfDeath\":\"1975-08-19T23:15:30.000Z\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{scheme}}://{{host}}/authors",
+              "protocol": "{{scheme}}",
+              "host": ["{{host}}"],
+              "path": ["authors"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /authors/:id",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"firstName\":\"John\",\"familyName\":\"Green\",\"dateOfBirth\":\"1975-08-19T23:15:30.000Z\",\"dateOfDeath\":\"2015-08-19T23:15:30.000Z\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{scheme}}://{{host}}/authors/5e9ff4c07e2ea532470c4a60",
+              "protocol": "{{scheme}}",
+              "host": ["{{host}}"],
+              "path": ["authors", "5e9ff4c07e2ea532470c4a60"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /authors/:id (not found)",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"firstName\":\"John\",\"familyName\":\"Green\",\"dateOfBirth\":\"1975-08-19T23:15:30.000Z\",\"dateOfDeath\":\"2015-08-19T23:15:30.000Z\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{scheme}}://{{host}}/authors/5e9ff4c07e2ea532470c4a61",
+              "protocol": "{{scheme}}",
+              "host": ["{{host}}"],
+              "path": ["authors", "5e9ff4c07e2ea532470c4a61"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /author/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{scheme}}://{{host}}/authors/5ea01dc9007fa04f4c6366e2",
+              "protocol": "{{scheme}}",
+              "host": ["{{host}}"],
+              "path": ["authors", "5ea01dc9007fa04f4c6366e2"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /author/:id (invalid operation)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{scheme}}://{{host}}/authors/5e9ff4c07e2ea532470c4a60",
+              "protocol": "{{scheme}}",
+              "host": ["{{host}}"],
+              "path": ["authors", "5e9ff4c07e2ea532470c4a60"]
+            }
+          },
+          "response": []
+        }
+      ],
+      "protocolProfileBehavior": {}
+    },
+    {
+      "name": "genre",
+      "item": [
+        {
+          "name": "GET /genres",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{scheme}}://{{host}}/genres",
+              "protocol": "{{scheme}}",
+              "host": ["{{host}}"],
+              "path": ["genres"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /genres/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{scheme}}://{{host}}/genres/5e77a7819aa7b74139799701",
+              "protocol": "{{scheme}}",
+              "host": ["{{host}}"],
+              "path": ["genres", "5e77a7819aa7b74139799701"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /genres/:id (not found)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{scheme}}://{{host}}/genres/5e77a7819aa7b74139799712",
+              "protocol": "{{scheme}}",
+              "host": ["{{host}}"],
+              "path": ["genres", "5e77a7819aa7b74139799712"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /genres/:id (invalid id)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{scheme}}://{{host}}/genres/5e7",
+              "protocol": "{{scheme}}",
+              "host": ["{{host}}"],
+              "path": ["genres", "5e7"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /genres",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\":\"Modern History\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{scheme}}://{{host}}/genres",
+              "protocol": "{{scheme}}",
+              "host": ["{{host}}"],
+              "path": ["genres"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /genres (invalid)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\":\"\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{scheme}}://{{host}}/genres",
+              "protocol": "{{scheme}}",
+              "host": ["{{host}}"],
+              "path": ["genres"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /genres/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{scheme}}://{{host}}/genres/5e77a93899d460427395ae13",
+              "protocol": "{{scheme}}",
+              "host": ["{{host}}"],
+              "path": ["genres", "5e77a93899d460427395ae13"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /genres/:id (invalid operation)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{scheme}}://{{host}}/genres/5e77a7819aa7b74139799701",
+              "protocol": "{{scheme}}",
+              "host": ["{{host}}"],
+              "path": ["genres", "5e77a7819aa7b74139799701"]
+            }
+          },
+          "response": []
+        }
+      ],
+      "protocolProfileBehavior": {}
+    }
+  ],
+  "protocolProfileBehavior": {}
+}

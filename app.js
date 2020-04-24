@@ -7,9 +7,9 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const indexRouter = require("./routes/index");
-const bookRouter = require("./routes/book");
-const authorRouter = require("./routes/author");
-const genreRouter = require("./routes/genre");
+const booksRouter = require("./routes/books");
+const authorsRouter = require("./routes/authors");
+const genresRouter = require("./routes/genres");
 const usersRouter = require("./routes/users");
 
 const app = express();
@@ -26,9 +26,9 @@ app.use(cookieParser());
 app.use(cors());
 
 app.use("/", indexRouter);
-app.use("/book", bookRouter);
-app.use("/author", authorRouter);
-app.use("/genre", genreRouter);
+app.use("/books", booksRouter);
+app.use("/authors", authorsRouter);
+app.use("/genres", genresRouter);
 app.use("/user", usersRouter);
 
 app.use((req, res, next) => {
