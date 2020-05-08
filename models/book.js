@@ -21,7 +21,7 @@ const BookSchema = new Schema({
 
 // Virtual for book's URL
 BookSchema.virtual("url").get(function () {
-  return "/book/" + this._id;
+  return "/books/" + this._id;
 });
 
 // BookSchema.toJSON({ virtuals: true });

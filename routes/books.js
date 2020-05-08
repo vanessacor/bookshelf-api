@@ -41,13 +41,14 @@ router.get("/:id", (req, res, next) => {
 });
 
 router.post("/", (req, res, next) => {
+  const { title, author, genre, status, summary, isbn } = req.body;
   const book = new Book({
-    title: req.body.title,
-    author: req.body.author,
-    genre: req.body.genre,
-    status: req.body.status,
-    summary: req.body.summary,
-    isbn: req.body.isbn,
+    title,
+    author,
+    genre,
+    status,
+    summary,
+    isbn,
   });
   book
     .save()

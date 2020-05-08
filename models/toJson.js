@@ -4,7 +4,7 @@ function booksToJson(books) {
 }
 
 function bookToJson(book) {
-  const { id, title, summary, isbn, url } = book;
+  const { id, title, status, summary, isbn, url } = book;
   const author = book.author ? authorToJson(book.author) : null;
   const genre = book.genre ? genresToJson(book.genre) : null;
   const data = {
@@ -12,6 +12,7 @@ function bookToJson(book) {
     title,
     author,
     genre,
+    status,
     summary,
     isbn,
     url,
@@ -25,10 +26,12 @@ function authorsToJson(authors) {
 }
 
 function authorToJson(author) {
-  const { id, name, lifespan, url } = author;
+  const { id, name, dateOfBirth, dateOfDeath, lifespan, url } = author;
   const data = {
     id,
     name,
+    dateOfBirth,
+    dateOfDeath,
     lifespan,
     url,
   };

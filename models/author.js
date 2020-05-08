@@ -26,13 +26,14 @@ AuthorSchema.virtual("name").get(function () {
 
 AuthorSchema.virtual("lifespan").get(function () {
   if (!this.dateOfDeath) {
-    return;
+    const today = new Date();
+    return (today.getYear() - this.dateOfBirth.getYear()).toString();
   }
   return (this.dateOfDeath.getYear() - this.dateOfBirth.getYear()).toString();
 });
 
 AuthorSchema.virtual("url").get(function () {
-  return "/author/" + this._id;
+  return "/authors/" + this._id;
 });
 
 AuthorSchema.virtual("date_of_birth_formatted").get(function () {

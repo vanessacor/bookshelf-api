@@ -30,6 +30,7 @@ router.get("/:id", (req, res, next) => {
       const author = results[0];
       const books = results[1];
       const authorJson = toJson.authorToJson(author);
+
       if (!author) {
         return next();
       }
