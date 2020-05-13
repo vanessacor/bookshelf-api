@@ -53,7 +53,8 @@ router.post("/", (req, res, next) => {
   book
     .save()
     .then(() => {
-      res.status(201).json(book);
+      const data = toJson.bookToJson(book);
+      res.status(201).json(data);
     })
     .catch((err) => {
       if (err instanceof ValidationError) {

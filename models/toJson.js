@@ -1,22 +1,26 @@
-function booksToJson(books) {
-  const data = books.map((book) => bookToJson(book));
+function booksToJson(books, details = ["genre", "author"]) {
+  const data = books.map((book) => bookToJson(book, details));
   return data;
 }
 
-function bookToJson(book) {
+function bookToJson(book, details = ["genre", "author"]) {
   const { id, title, status, summary, isbn, url } = book;
-  const author = book.author ? authorToJson(book.author) : null;
-  const genre = book.genre ? genresToJson(book.genre) : null;
   const data = {
     id,
     title,
-    author,
-    genre,
     status,
     summary,
     isbn,
     url,
   };
+
+  if (book.author && details.includes("author")) {
+    data.author = authorToJson(book.author);
+  }
+
+  if (book.genre && details.includes("genre")) {
+    data.genre = genresToJson(book.genre);
+  }
   return data;
 }
 

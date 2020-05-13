@@ -23,22 +23,19 @@ router.get("/", (req, res, next) => {
 router.get("/:id", (req, res, next) => {
   const author = Author.findById(req.params.id).exec();
 
-  const books = Book.find({ author: req.params.id }).exec();
+  const books = Book.find({ author: req.params.id }).populate("genre").exec();
 
   Promise.all([author, books])
     .then((results) => {
-      const author = results[0];
-      const books = results[1];
-      const authorJson = toJson.authorToJson(author);
-
-      if (!author) {
+      if (!results[0]) {
         return next();
       }
-      const data = {
-        authorJson,
-        books,
-      };
-      res.json(data);
+
+      const author = toJson.authorToJson(results[0]);
+      const books = toJson.booksToJson(results[1], ["genre"]);
+      author.books = books;
+
+      res.json(author);
     })
     .catch(next);
 });
@@ -54,7 +51,8 @@ router.post("/", (req, res, next) => {
   author
     .save()
     .then(() => {
-      res.status(201).json(author);
+      const data = toJson.authorToJson(author);
+      res.status(201).json(data);
     })
     .catch((err) => {
       if (err instanceof ValidationError) {

@@ -23,20 +23,19 @@ router.get("/", (req, res, next) => {
 router.get("/:id", (req, res, next) => {
   const genre = Genre.findById(req.params.id).exec();
 
-  const books = Book.find({ genre: req.params.id }).exec();
+  const books = Book.find({ genre: req.params.id }).populate("author").exec();
 
   Promise.all([genre, books])
     .then((results) => {
-      const genre = results[0];
-      const books = results[1];
-      if (!genre) {
+      if (!results[0]) {
         return next();
       }
-      const data = {
-        genre,
-        books,
-      };
-      res.json(data);
+
+      const genre = toJson.genreToJson(results[0]);
+      const books = toJson.booksToJson(results[1], ["author"]);
+      genre.books = books;
+
+      res.json(genre);
     })
     .catch(next);
 });
