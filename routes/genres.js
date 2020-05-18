@@ -45,7 +45,9 @@ router.post("/", (req, res, next) => {
   genre
     .save()
     .then(() => {
-      res.status(201).json(genre);
+      const data = toJson.authorToJson(genre);
+
+      res.status(201).json(data);
     })
     .catch((err) => {
       if (err instanceof ValidationError) {
