@@ -84,7 +84,8 @@ router.put("/:id", (req, res, next) => {
       if (!book) {
         return next();
       }
-      res.status(200).json(book);
+      const data = toJson.bookToJson(book);
+      res.status(200).json(data);
     })
     .catch((err) => {
       if (err instanceof ValidationError) {

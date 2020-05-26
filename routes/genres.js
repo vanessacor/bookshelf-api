@@ -65,7 +65,7 @@ router.put("/:id", (req, res, next) => {
   }
   const data = { name: req.body.name };
 
-  Author.findByIdAndUpdate(req.params.id, data, { new: true })
+  Genre.findByIdAndUpdate(req.params.id, data, { new: true })
     .then((genre) => {
       if (!genre) {
         return next();

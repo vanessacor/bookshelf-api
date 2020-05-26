@@ -80,7 +80,8 @@ router.put("/:id", (req, res, next) => {
       if (!author) {
         return next();
       }
-      res.status(200).json(author);
+      const data = toJson.authorToJson(author);
+      res.status(200).json(data);
     })
     .catch((err) => {
       if (err instanceof ValidationError) {
