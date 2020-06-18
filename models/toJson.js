@@ -30,9 +30,20 @@ function authorsToJson(authors) {
 }
 
 function authorToJson(author) {
-  const { _id, name, dateOfBirth, dateOfDeath, lifespan, url } = author;
+  const {
+    id,
+    firstName,
+    familyName,
+    name,
+    dateOfBirth,
+    dateOfDeath,
+    lifespan,
+    url,
+  } = author;
   const data = {
-    id: _id,
+    id,
+    firstName,
+    familyName,
     name,
     dateOfBirth,
     dateOfDeath,
@@ -48,9 +59,9 @@ function genresToJson(genres) {
 }
 
 function genreToJson(genre) {
-  const { _id, name, url } = genre;
+  const { id, name, url } = genre;
   const data = {
-    id: _id,
+    id,
     name,
     url,
   };
